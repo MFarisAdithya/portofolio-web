@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kontak | Faris</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="contact-page">
+    <header>
+        <nav class="navbar">
+            <div class="logo">Portofolio</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Beranda</a></li>
+                <li><a href="about.html">Tentang</a></li>
+                <li><a href="projects.html">Proyek</a></li>
+                <li><a href="skills.html">Keahlian</a></li>
+                <li><a href="contact.html" class="active">Kontak</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="page-container">
+        <div class="page-header">
+            <h1>Mari Berdiskusi.</h1>
+            <p>Tertarik untuk membahas data, analisis sistem, atau sekadar menyapa? Jangan ragu untuk menghubungi saya!</p>
+        </div>
+
+        <div class="contact-wrapper">
+            <form id="contactForm" class="contact-form">
+                <div class="form-group">
+                    <label for="name">Nama Lengkap</label>
+                    <input type="text" id="name" placeholder="Masukkan nama Anda">
+                </div>
+                <div class="form-group">
+                    <label for="email">Alamat Email</label>
+                    <input type="email" id="email" placeholder="nama@email.com">
+                </div>
+                <div class="form-group">
+                    <label for="message">Pesan</label>
+                    <textarea id="message" rows="5" placeholder="Tulis pesan Anda di sini..."></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary" id="submitBtn">Kirim Pesan</button>
+                
+                <p id="formStatus" class="form-status"></p> 
+            </form>
+        </div>
+    </main>
+
+    <script>
+        const form = document.getElementById('contactForm');
+        const nameInput = document.getElementById('name');
+        const emailInput = document.getElementById('email');
+        const messageInput = document.getElementById('message');
+        const statusText = document.getElementById('formStatus');
+
+        form.addEventListener('submit', function(event) {
+            event.preventDefault(); 
+
+            const nameValue = nameInput.value.trim();
+            const emailValue = emailInput.value.trim();
+            const messageValue = messageInput.value.trim();
+
+            if (nameValue === '' || emailValue === '' || messageValue === '') {
+                statusText.textContent = "Oops! Semua kolom wajib diisi ya.";
+                statusText.style.color = "#e74c3c";
+                statusText.style.display = "block";
+            } else {
+                statusText.textContent = "Halo " + nameValue + ", pesanmu berhasil terkirim!";
+                statusText.style.color = "#2ecc71";
+                statusText.style.display = "block";
+
+                form.reset();
+            }
+        });
+    </script>
+</body>
+</html>
